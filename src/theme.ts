@@ -10,6 +10,9 @@ const theme = createMuiTheme({
       // This is green.A700 as hex.
       main: "#333f48",
     },
+    success: {
+      main: "#579d42",
+    },
   },
 });
 

@@ -12,6 +12,7 @@ import {
   TextField,
 } from "@material-ui/core";
 
+import QueueStatus from "./components/status";
 import QueueNotFound from "./components/notFound";
 import QueueLoading from "./components/loading";
 import useQueue from "./useQueue";
@@ -42,7 +43,11 @@ const SingleQueue = () => {
                 title={`Queue: ${data.id} - ${data.school}`}
               />
               <CardContent>
-                <Grid container spacing={3}></Grid>
+                <Grid container spacing={3}>
+                  <Grid item>
+                    <QueueStatus queue={data} />
+                  </Grid>
+                </Grid>
               </CardContent>
               <CardActions>
                 <Link href="/school">

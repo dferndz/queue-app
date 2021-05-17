@@ -1,5 +1,5 @@
-import { Queue } from "./types";
-import { queues } from "./sample";
+import { Queue } from "../types";
+import { queues } from "../sample";
 
 const getQueue = (id: string) => {
   return queues.find((q: Queue) => q.id == id);
