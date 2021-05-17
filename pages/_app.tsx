@@ -4,6 +4,24 @@ import Head from "next/head";
 import { ThemeProvider } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
+import NProgress from "nprogress";
+import Router from "next/router";
+
+import "../src/assets/css/nprogress.css";
+
+NProgress.configure({ showSpinner: true });
+
+Router.events.on("routeChangeStart", () => {
+  NProgress.start();
+});
+
+Router.events.on("routeChangeComplete", () => {
+  NProgress.done();
+});
+
+Router.events.on("routeChangeError", () => {
+  NProgress.done();
+});
 
 export default function MyApp(props) {
   const { Component, pageProps } = props;

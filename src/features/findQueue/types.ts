@@ -1,4 +1,2 @@
-export type Queue = {
-  id: string;
-  school: string;
-};
+import { Queue } from "../queue/types";
+export type { Queue };

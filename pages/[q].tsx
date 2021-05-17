@@ -1,11 +1,8 @@
 import React from "react";
-import { useRouter } from "next/router";
+import SingleQueue from "../src/features/queue";
 
 const Queue = () => {
-  const router = useRouter();
-  const { q } = router.query;
-
-  return <p>Queue: {q}</p>;
+  return <SingleQueue />;
 };
 
 export default Queue;
