@@ -10,6 +10,7 @@ import {
 } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { useRouter } from "next/router";
+import Link from "next/link";
 
 import SearchResults from "./components/results";
 import useQueues from "./useQueues";
@@ -82,6 +83,18 @@ const QueueFinder = () => {
               </Grid>
             </Grid>
           </CardContent>
+          <CardActions>
+            <Link href="/school">
+              <Button size="small" color="secondary">
+                Register school
+              </Button>
+            </Link>
+            <Link href="/instructor">
+              <Button size="small" color="secondary">
+                Instructor account
+              </Button>
+            </Link>
+          </CardActions>
         </Card>
       </Grid>
     </Grid>
