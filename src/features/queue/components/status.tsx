@@ -85,13 +85,13 @@ const QueueData = ({ queue }: Props) => {
           </Button>
         )}
       </Grid>
-      {queue.myPos && (
+      {queue.myPos != 0 && (
         <Grid item xs={2}>
           <CircularProgress
             size={120}
-            value={(queue.myPos * 100) / queue.count}
+            value={100 - ((queue.myPos - 1) * 100) / queue.count}
             text={`${queue.myPos}/${queue.count}`}
-            circleColor="#579d42"
+            circlecolor="#579d42"
           />
         </Grid>
       )}

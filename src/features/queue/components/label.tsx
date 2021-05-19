@@ -17,7 +17,13 @@ type Props = {
   textColor?: string;
 };
 
-const Label = ({ IconComponent, text, iconColor, textColor, prefix }) => {
+const Label = ({
+  IconComponent,
+  text,
+  iconColor,
+  textColor,
+  prefix,
+}: Props) => {
   const classes = useStyles();
 
   return (

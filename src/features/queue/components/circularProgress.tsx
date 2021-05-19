@@ -7,14 +7,14 @@ import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
 
 const CircularProgressWithLabel = (
-  props: CircularProgressProps & { text?: string; circleColor?: string }
+  props: CircularProgressProps & { text?: string; circlecolor?: string }
 ) => {
   return (
     <Box position="relative" display="inline-flex">
       <CircularProgress
         variant="determinate"
         {...props}
-        style={{ color: props.circleColor }}
+        style={{ color: props.circlecolor }}
       />
       <Box
         top={0}

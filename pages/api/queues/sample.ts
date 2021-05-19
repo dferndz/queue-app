@@ -1,4 +1,5 @@
 import { Queue } from "./types";
+import defaultView from "../";
 
 export const queues: Queue[] = [
   {
@@ -66,3 +67,5 @@ export const queues: Queue[] = [
     lastOpened: new Date(2021, 4, 17, 12, 53),
   },
 ];
+
+export default defaultView;
