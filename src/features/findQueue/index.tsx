@@ -94,9 +94,9 @@ const QueueFinder = () => {
               </Grid>
             </CardContent>
             <CardActions>
-              <Link href="/school">
+              <Link href="/new-queue">
                 <Button size="small" color="secondary">
-                  Register school
+                  New queue
                 </Button>
               </Link>
               <Link href="/instructor">
