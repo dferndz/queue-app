@@ -1,4 +1,4 @@
-import { useReducer, useEffect } from "react";
+import { useReducer, useEffect, useCallback } from "react";
 
 import { Queue } from "./types";
 
@@ -53,8 +53,31 @@ const initialState: State = {
   isLoading: false,
 };
 
-const useQueue = (qid: string) => {
+const useQueue = (qid: string): [State, () => void, () => void] => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  const join = useCallback(() => {
+    dispatch({ type: ACTIONS.INIT });
+    fetch(`api/queues/${qid}/join`)
+      .then((res) =>
+        res.json().then((data) => {
+          console.log("Success");
+          dispatch({ type: ACTIONS.SUCCESS, payload: data });
+        })
+      )
+      .catch((error) => dispatch({ type: ACTIONS.FAIL, payload: error }));
+  }, [qid]);
+
+  const exit = useCallback(() => {
+    dispatch({ type: ACTIONS.INIT });
+    fetch(`api/queues/${qid}/exit`)
+      .then((res) =>
+        res.json().then((data) => {
+          dispatch({ type: ACTIONS.SUCCESS, payload: data });
+        })
+      )
+      .catch((error) => dispatch({ type: ACTIONS.FAIL, payload: error }));
+  }, [qid]);
 
   useEffect(() => {
     dispatch({ type: ACTIONS.INIT });
@@ -73,7 +96,7 @@ const useQueue = (qid: string) => {
       .catch((error) => dispatch({ type: ACTIONS.FAIL, payload: error }));
   }, [qid]);
 
-  return { ...(state as State) };
+  return [state as State, join, exit];
 };
 
 export default useQueue;

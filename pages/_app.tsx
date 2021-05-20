@@ -6,6 +6,7 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import theme from "../src/theme";
 import NProgress from "nprogress";
 import Router from "next/router";
+import { Provider } from "next-auth/client";
 
 import "../src/assets/css/nprogress.css";
 
@@ -44,9 +45,11 @@ export default function MyApp(props) {
         />
       </Head>
       <ThemeProvider theme={theme}>
-        {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
-        <CssBaseline />
-        <Component {...pageProps} />
+        <Provider session={pageProps.session}>
+          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
+          <CssBaseline />
+          <Component {...pageProps} />
+        </Provider>
       </ThemeProvider>
     </React.Fragment>
   );

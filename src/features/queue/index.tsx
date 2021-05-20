@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/router";
 
 import Link from "next/link";
@@ -22,7 +22,7 @@ const SingleQueue = () => {
   const classes = useStyles();
   const router = useRouter();
   const qid = router.query.q! as string;
-  const { data, isLoading, errors } = useQueue(qid);
+  const [{ data, isLoading, errors }, join, exit] = useQueue(qid);
 
   return (
     <div>
@@ -45,7 +45,7 @@ const SingleQueue = () => {
               <CardContent>
                 <Grid container spacing={3}>
                   <Grid item>
-                    <QueueStatus queue={data} />
+                    <QueueStatus queue={data} join={join} exit={exit} />
                   </Grid>
                 </Grid>
               </CardContent>

@@ -17,7 +17,7 @@ export default async (req, res) => {
 
   const email_sha = encription.sha224(session.user.email!);
 
-  if (await queues.join(qid, email_sha)) {
+  if (await queues.exit(qid, email_sha)) {
     const q = await getQueue(qid, session);
     res.status(200).json(q);
     return;
