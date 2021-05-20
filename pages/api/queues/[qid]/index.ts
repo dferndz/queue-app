@@ -9,8 +9,9 @@ import encription from "js-sha256";
  * @returns Queue | null
  */
 export const getQueue = async (id: string, session) => {
+  const clean_id = id.replace(/[^\w\s]/gi, "");
   const qs = await queues.getAll();
-  const q = qs.find((q: Queue) => q.id == id);
+  const q = qs.find((q: Queue) => q.id == clean_id);
 
   if (q) {
     if (session && session.user) {
@@ -39,7 +40,7 @@ export const getQueue = async (id: string, session) => {
     return null;
   }
 
-  return qs.find((q: Queue) => q.id == id);
+  return qs.find((q: Queue) => q.id == clean_id);
 };
 
 export default async (req, res) => {

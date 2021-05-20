@@ -1,10 +1,10 @@
 import { Queue } from "./types";
 import { queues } from "../firebase/queues";
 
-// TODO: clean str of dangerous characters
 const getQueues = async (str: string) => {
+  const clean = str.replace(/[^\w\s]/gi, "");
   const qs: Queue[] = await queues.getAll();
-  return qs.filter((q: Queue) => q.id.match(`${str}`)).slice(0, 5);
+  return qs.filter((q: Queue) => q.id.match(`${clean}`)).slice(0, 5);
 };
 
 export default (req, res) => {

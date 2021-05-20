@@ -61,7 +61,6 @@ const useQueue = (qid: string): [State, () => void, () => void] => {
     fetch(`api/queues/${qid}/join`)
       .then((res) =>
         res.json().then((data) => {
-          console.log("Success");
           dispatch({ type: ACTIONS.SUCCESS, payload: data });
         })
       )
