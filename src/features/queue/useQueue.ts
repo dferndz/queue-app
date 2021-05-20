@@ -80,6 +80,7 @@ const useQueue = (qid: string): [State, () => void, () => void] => {
   }, [qid]);
 
   useEffect(() => {
+    if (!qid) return;
     dispatch({ type: ACTIONS.INIT });
     fetch(`/api/queues/${qid}`)
       .then((res) => {

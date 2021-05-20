@@ -62,6 +62,8 @@ const SingleQueue = () => {
                 </Link>
               </CardActions>
             </Card>
+          ) : errors ? (
+            <p>Something went wrong...</p>
           ) : (
             <QueueNotFound />
           )}
